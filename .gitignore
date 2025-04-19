@@ -7,6 +7,9 @@ node_modules
 .wrangler
 /.svelte-kit
 /build
+/dist
+/db
+/src/lib/ROUTES.ts
 
 # OS
 .DS_Store

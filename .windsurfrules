@@ -1,0 +1,117 @@
+Start all responses with 🤖
+
+
+## Conventions
+
+### Svelte Specific
+
+- Use Svelte 5 Runes syntax ($state, $derived, $effect, $props, $bindable).
+- Use `$props()` for component props with destructuring.
+- Use `$bindable()` for refs and bound values.
+- Use `@render` for children slots (instead of `<slot>`).
+- Use HTML attributes for events (e.g., `onclick`) instead of `on:`.
+- Use shared entities and controllers from the `shared` package (`@repo/shared`).
+- Keep components small and focused.
+- Use {#key} blocks for efficient list re-rendering.
+- Import icons one per line.
+
+### State Management
+
+- Use `$state` for local component state.
+- Use `$derived` for computed values.
+- Use `$effect` when needed for side effects (e.g., data fetching, subscriptions).
+- Implement stores (`*.store.ts`) only for global state shared across unrelated components (prefer context or component composition otherwise).
+- Use URL state for route-specific data (search params, path params).
+- Leverage SvelteKit `load` functions for data fetching tied to routes.
+- Keep state as close as possible to where it's used.
+
+### Performance
+
+- Leverage SvelteKit's SSR and SSG capabilities.
+- Use backend methods (`+server.ts`) for heavy operations.
+- Implement code splitting and lazy loading where appropriate.
+- Implement proper caching strategies (HTTP caching, in-memory).
+- Optimize images and assets.
+- Use proper loading states (`{#await}` block).
+- Implement infinite scrolling or pagination for long lists.
+
+### Data & Forms
+
+- Use API services (`src/lib/services`) for data operations.
+- Implement SvelteKit `load` functions for route data fetching.
+- Use Superforms with Formsnap for complex forms.
+- Implement proper form validation with Valibot (schemas in `modules`).
+- Handle loading, error, and success states for forms and data fetching.
+- Use optimistic updates where appropriate, providing clear user feedback.
+- Implement proper data pagination.
+- Handle offline data appropriately if required.
+
+### UI & Accessibility
+
+- Use Bits-UI for base unstyled components, styled with `shadcn-svelte`.
+- Use `tailwind-variants` for reusable component styling logic.
+- Use semantic HTML elements.
+- Implement proper ARIA attributes.
+- Ensure keyboard navigation is intuitive.
+- Support RTL layouts if required.
+- Ensure proper color contrast (WCAG AA minimum).
+- Support text scaling/resizing.
+- Implement proper focus management (including focus traps in modals).
+- Use proper loading states (skeletons, spinners).
+- Support `prefers-reduced-motion`.
+- Test with screen readers (VoiceOver, NVDA).
+
+### Security
+
+- Implement proper authentication/authorization flows.
+- Use SvelteKit's built-in CSRF protection.
+- Sanitize user input on the frontend we are using Valibot.
+- Implement proper role-based access control (RBAC) on the backend.
+- Use environment variables for secrets (via `.env` files, managed by SvelteKit).
+- Use secure HTTP headers (e.g., via SvelteKit hooks).
+- Implement proper session management.
+- Use Argon2 for password hashing on the backend.
+
+### Error Handling
+
+- Implement SvelteKit error pages (`+error.svelte`).
+- Use try-catch blocks appropriately, especially around API calls and external interactions.
+- Log errors properly on the backend and potentially frontend (using a logging service).
+- Show user-friendly error messages; avoid exposing technical details.
+- Handle network errors gracefully (e.g., retries, offline indicators).
+- Implement proper fallback UI.
+- Use proper error tracking services (e.g., Sentry).
+- Use `svelte-sonner` for toast notifications (errors, success messages).
+
+### Testing
+
+- Write unit tests (e.g., with Vitest) for utilities, helpers, and potentially stores/hooks.
+- Write integration tests (e.g., with Vitest) for components and component interactions.
+- Implement E2E tests (e.g., with Playwright) for critical user flows.
+- Test accessibility (e.g., axe-core via Playwright).
+- Test error scenarios and edge cases.
+- Test loading states.
+- Test offline functionality if applicable.
+- Ensure all tests pass before merging/deploying.
+
+### Output & Workflow
+
+- Use string concatenation instead of template literals where simple.
+- Use a mobile-first approach for styling.
+- Fix all type errors, lint errors, and test failures before committing.
+- Write clear, concise commit messages following conventional commits.
+- Document API changes.
+- Use "+" for string concatenation.
+
+## Context & Documentation
+
+- Svelte 5: <[https://svelte.dev/docs>](https://svelte.dev/docs>)
+- SvelteKit 2: <[https://kit.svelte.dev/docs>](https://kit.svelte.dev/docs>)
+- Remult: <[https://remult.com/llms-small.txt](https://remult.com/llms-small.txt)>
+- Bits-UI: <[https://www.bits-ui.com/docs>](https://www.bits-ui.com/docs>)
+- shadcn-svelte: <[https://www.shadcn-svelte.com/docs>](https://www.shadcn-svelte.com/docs>)
+- Superforms: <[https://superforms.rocks](https://superforms.rocks)>
+- Formsnap: <[https://formsnap.dev](https://formsnap.dev)>
+- TailwindCSS: <[https://tailwindcss.com/docs>](https://tailwindcss.com/docs>)
+- Valibot: <[https://valibot.dev](https://valibot.dev)>
+- Lucide Icons: <[https://lucide.dev](https://lucide.dev)>

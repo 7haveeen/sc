@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /
+
+# Only allow access to join/signup pages
+Allow: /join
+
+# Explicitly block signin/login pages (for extra clarity)
+Disallow: /signin
+
+# Sitemap location
+Sitemap: https://www.7haven.online/sitemap.xml
